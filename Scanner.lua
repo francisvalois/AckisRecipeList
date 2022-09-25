@@ -1025,9 +1025,15 @@ do
 --		_G.WorldMapFrame:SetMapID(mapID) -- Make sure were are looking at the right zone
 
 		local vendorZone = _G.C_Map.GetMapInfo(mapID).name
-		local vendorcoords_x, vendorcoords_y = _G.C_Map.GetPlayerMapPosition(mapID, "player"):GetXY()
-		vendorX = ("%.2f"):format(vendorcoords_x * 100)
-		vendorY = ("%.2f"):format(vendorcoords_y * 100)
+
+		if mapID == 582 or mapID == 590 then
+			return
+		else
+			local vendorcoords_x, vendorcoords_y = _G.C_Map.GetPlayerMapPosition(mapID, "player"):GetXY()
+			vendorX = ("%.2f"):format(vendorcoords_x * 100)
+			vendorY = ("%.2f"):format(vendorcoords_y * 100)
+		end
+
 
 		if vendor then
 			if vendor.coord_x ~= vendorX or vendor.coord_y ~= vendorY then
@@ -1138,9 +1144,9 @@ do
 								NormalizeVendorData(spell_id, supply, vendor_id, vendor_name)
 							end
 						end
-						--@debug@
+						--[===[@debug@
 						output:AddLine(("Spell ID not found for recipe item %d (%s)"):format(item_id, item_name))
-						--@end-debug@
+						--@end-debug@]===]
 					end
 				end
 			end

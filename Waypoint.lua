@@ -177,7 +177,7 @@ function addon:AddWaypoint(recipe, targetAcquireType, location, npcID)
                 end
 
                 if coordX and coordY then
-                    --@debug@
+                    --[===[@debug@
                     if coordX == 0 and coordY == 0 then
                         self:Debug("Location is \"0, 0\" for recipe %s (ID %d). Location: %s.", recipe:LocalizedName(), recipe:SpellID(), entityLocation:Name())
                     elseif ((coordX < -100) or (coordX > 100)) or ((coordY < -100) or (coordY > 100)) then
@@ -185,7 +185,7 @@ function addon:AddWaypoint(recipe, targetAcquireType, location, npcID)
                         coordX = nil
                         coordY = nil
                     end
-                    --@end-debug@
+                    --@end-debug@]===]
 
                     local waypoint = _G.TomTom:AddWaypoint(waypointLocation:MapID(), coordX / 100, coordY / 100, {
                         crazy = true,

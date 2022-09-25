@@ -24,9 +24,9 @@ addon.constants.addon_name = private.addon_name
 addon.Name = FOLDER_NAME -- For cases when ARL needs to act as one of its modules.
 _G.AckisRecipeList = addon
 
---@alpha@
+--[===[@alpha@
 _G.ARL = addon
---@end-alpha@
+--@end-alpha@]===]
 
 local L = LibStub("AceLocale-3.0"):GetLocale(private.addon_name)
 local Toast = LibStub("LibToast-1.0")
@@ -42,7 +42,7 @@ private.TextDump = LibStub("LibTextDump-1.0"):New(private.addon_name)
 -- ----------------------------------------------------------------------------
 -- Constants.
 -- ----------------------------------------------------------------------------
-local SUPPORTED_MODULE_VERSION = 3
+local SUPPORTED_MODULE_VERSION = 4
 
 -- ----------------------------------------------------------------------------
 -- Dialogs.
@@ -116,9 +116,9 @@ addon.optionsFrame = {}
 -- ----------------------------------------------------------------------------
 function addon:Debug(...)
 	local text = private.Debug(...)
-	--@debug@
+	--[===[@debug@
 	Toast:Spawn("ARL_DebugToast", text)
-	--@end-debug@
+	--@end-debug@]===]
 end
 
 Toast:Register("ARL_DebugToast", function(toast, ...)
@@ -155,9 +155,9 @@ function addon:OnInitialize()
 	REQUIRED_LIBS = nil
 
 	if missing_libraries then
-		--@debug@
+		--[===[@debug@
 		addon:Print("You are using a development version of ARL.  As per WowAce standards, externals are not set up.  You will have to install all necessary libraries in order for the addon to function correctly.")
-		--@end-debug@
+		--@end-debug@]===]
 		_G.AckisRecipeList = nil
 		return
 	end
@@ -263,6 +263,7 @@ function addon:OnInitialize()
 					worlddrop = true,
 					worldevent = true,
 					tradeskill = true,
+					mixed = true,
 				},
 				-- ----------------------------------------------------------------------------
 				-- Profession Item Filters
@@ -350,13 +351,13 @@ function addon:OnInitialize()
 	local debug_version = false
 	local alpha_version = false
 
-	--@debug@
+	--[===[@debug@
 	debug_version = true
-	--@end-debug@
+	--@end-debug@]===]
 
-	--@alpha@
+	--[===[@alpha@
 	alpha_version = true
-	--@end-alpha@
+	--@end-alpha@]===]
 
 	version = debug_version and "Devel" or (alpha_version and version .. "-Alpha") or version
 
@@ -382,7 +383,7 @@ function addon:OnInitialize()
 			return
 		end
 		local id_num = private.MobGUIDToIDNum(_G.UnitGUID(tooltip_unit))
-		local unit = private.AcquireTypes.MobDrop:GetEntity(id_num) or private.AcquireTypes.Vendor:GetEntity(id_num) or private.AcquireTypes.Trainer:GetEntity(id_num)
+		local unit = private.AcquireTypes.MobDrop:GetEntity(id_num) or private.AcquireTypes.Vendor:GetEntity(id_num) or private.AcquireTypes.Trainer:GetEntity(id_num) or private.AcquireTypes.Mixed:GetEntity(id_num)
 
 		if not unit or not unit.item_list then
 			return
@@ -509,7 +510,7 @@ function addon:TRADE_SKILL_SHOW()
 				addon:Scan(true)
 			elseif isAltKeyDown and not isShiftKeyDown and not isControlKeyDown then
 				addon:ClearWaypoints()
-				--@debug@
+				--[===[@debug@
 			elseif isControlKeyDown then
 				local professionID, _, _, _, _, _, localizedProfessionName = _G.C_TradeSkillUI.GetTradeSkillLine()
 
@@ -520,7 +521,7 @@ function addon:TRADE_SKILL_SHOW()
 						addon:DumpProfession(localizedProfessionName)
 					end
 				end
-				--@end-debug@
+				--@end-debug@]===]
 			elseif not isShiftKeyDown and not isAltKeyDown and not isControlKeyDown then
 				local mainPanel = addon.Frame
 
@@ -539,10 +540,10 @@ function addon:TRADE_SKILL_SHOW()
 
 			_G.GameTooltip_SetDefaultAnchor(tooltip, self)
 			tooltip:SetText(L["SCAN_RECIPES_DESC"])
-			--@debug@
+			--[===[@debug@
 			tooltip:AddLine("Control-click to generate a Lua code dump.")
 			tooltip:AddLine("Control-Shift-click to scan for issues.")
-			--@end-debug@
+			--@end-debug@]===]
 			tooltip:Show()
 		end)
 
@@ -637,6 +638,7 @@ do
 		addon:InitTrainer()
 		addon:InitWorldEvents()
 		addon:InitVendor()
+		addon:InitMixed()
 
 		InitializeLookups = nil
 	end
@@ -743,7 +745,7 @@ local SUBCOMMAND_FUNCS = {
 
 		debugger:Display()
 	end,
-	--@debug@
+	--[===[@debug@
 	dump = function(arg1, arg2)
 		local func = private.DUMP_COMMANDS[arg1]
 
@@ -760,7 +762,7 @@ local SUBCOMMAND_FUNCS = {
 	scanprofs = function()
 		addon:ScanProfession("all")
 	end,
-	--@end-debug@
+	--@end-debug@]===]
 }
 
 function addon:ChatCommand(input)
@@ -928,7 +930,7 @@ do
 					recipe:RemoveState("LINKED")
 				end
 			else
-				--@debug@
+				--[===[@debug@
 				local recipe = self:AddRecipe(profession:Module(), {
 					_acquireTypeData = {},
 					_bitflags = {},
@@ -942,10 +944,11 @@ do
 					recipe.isValidated = true
 					recipe:SetSkillLevels(0, 0, 0, 0, 0)
 					recipe:AddFilters(private.FILTER_IDS.ALLIANCE, private.FILTER_IDS.HORDE, private.FILTER_IDS.TRAINER)
+					recipe:AddCustom("UNKNOWN")
 
 					addon:Printf("Added '%s (%d)' to %s. Do a profession dump.", recipeInfo.name, recipeID, localizedProfessionName)
 				end
-				--@end-debug@
+				--@end-debug@]===]
 
 				if not self.is_development_version then
 					self:Debug("%s (%d): %s", recipeInfo.name, recipeID, L["MissingFromDB"])
@@ -953,7 +956,7 @@ do
 			end
 		end
 
-		--@debug@
+		--[===[@debug@
 
 		local invalidRecipesList
 		local invalisRecipesCount = 0
@@ -978,7 +981,7 @@ do
 			self:Printf("Removed %d invalid recipes from %s. Do a profession dump.", invalisRecipesCount, localizedProfessionName)
 		end
 
-		--@end-debug@
+		--@end-debug@]===]
 
 		previous_recipe_count = current_recipe_count
 		current_recipe_count = foundRecipeCount
@@ -1032,6 +1035,7 @@ do
 				HORDE = LFAC.HORDE,
 				TRAINER = L["Trainer"],
 				VENDOR = L["Vendor"],
+				MIXED = L["Trainer & Vendor"],
 				INSTANCE = _G.INSTANCE,
 				RAID = _G.RAID,
 				WORLD_EVENT = _G.EVENTS_LABEL,
@@ -1067,6 +1071,9 @@ do
 				-- ----------------------------------------------------------------------------
 				HELLFIRE = (is_alliance and LFAC.HONOR_HOLD or LFAC.THRALLMAR),
 				NAGRAND = (is_alliance and LFAC.KURENAI or LFAC.MAGHAR),
+				ZANDALAR = (is_alliance and LFAC.STORMS_WAKE or LFAC.ZANDALARI_EMPIRE),
+				LEGION = (is_alliance and LFAC.SEVENTH_LEGION or LFAC.THE_HONORBOUND),
+				PROUDMOORE = (is_alliance and LFAC.PROUDMOORE_ADMIRALTY or LFAC.TALANJIS_EXPEDITION),
 			}
 
 			for rep_label in private.FACTION_IDS_FROM_LABEL do

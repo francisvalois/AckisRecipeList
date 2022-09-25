@@ -21,6 +21,7 @@ private.RegisterAcquireType({
 	__waypoint_checks = {
 		maptrainer = "TRAINER",
 		mapvendor = "VENDOR",
+		mapmixed = "TRAINER & VENDOR",
 		mapquest = "QUEST",
 	},
 	__waypoint_filters = {

@@ -107,6 +107,8 @@ function Player:HasProperRepLevel(rep_data)
 					rep_id = is_alliance and FAC.HONOR_HOLD or FAC.THRALLMAR
 				elseif rep_id == FAC.MAGHAR or rep_id == FAC.KURENAI then
 					rep_id = is_alliance and FAC.KURENAI or FAC.MAGHAR
+				elseif rep_id == FAC.STORMS_WAKE or rep_id == FAC.ZANDALARI_EMPIRE then
+					rep_id = is_alliance and FAC.STORMS_WAKE or FAC.ZANDALARI_EMPIRE
 				end
 
 				if not reputation_levels[rep_name] or reputation_levels[rep_name] < rep_level then

@@ -470,6 +470,7 @@ function private.InitializeFilterPanel()
 			worlddrop	= { tt = L["WORLD_DROP_DESC"],	text = L["World Drop"],				row = 7, col = 1 },
 			worldevent	= { tt = L["SEASONAL_DESC"],	text = private.AcquireTypes.WorldEvent:Name(),  row = 7, col = 2 },
 			tradeskill      = { tt = _G.TRADE_SKILLS,       text = private.AcquireTypes.TradeSkill:Name(), 	row = 8, col = 1 },
+			mixed		= { tt = L["MIXED_DESC"],	text = L["Trainer & Vendor"],			row = 9, col = 1 },
 		}
 
 		local acquire_panel = _G.CreateFrame("Frame", nil, obtain_frame)
@@ -852,7 +853,7 @@ function private.InitializeFilterPanel()
 		end
 		private.GenerateCheckBoxes(expansion_frame, expansion_buttons)
 
-		local expansion_toggle = _G.CreateFrame("Button", nil, expansion_frame, "UIPanelButtonTemplate")
+		local expansion_toggle = _G.CreateFrame("Button", nil, expansion_frame)
 		expansion_toggle:SetWidth(105)
 		expansion_toggle:SetHeight(20)
 		expansion_toggle:SetNormalFontObject("QuestTitleFont")

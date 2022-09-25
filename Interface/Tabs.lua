@@ -201,6 +201,9 @@ local AcquireDataExpandPredicates = {
 	[AcquireTypes.Vendor] = function(obtainFilters, shouldHideType)
 		return obtainFilters.vendor or obtainFilters.pvp
 	end,
+	[AcquireTypes.Mixed] = function(obtainFilters, shouldHideType)
+		return obtainFilters.mixed
+	end,
 	[AcquireTypes.MobDrop] = function(obtainFilters, shouldHideType)
 		return obtainFilters.mobdrop or obtainFilters.instance or obtainFilters.raid
 	end,
@@ -536,7 +539,7 @@ local function InitializeLocationTab()
 					local hideAcquireType
 					local shouldExecute
 
-					if (acquireType == private.AcquireTypes.Trainer or acquireType == private.AcquireTypes.Vendor or acquireType == private.AcquireTypes.MobDrop or acquireType == private.AcquireTypes.Quest)
+					if (acquireType == private.AcquireTypes.Trainer or acquireType == private.AcquireTypes.Vendor or acquireType == private.AcquireTypes.MobDrop or acquireType == private.AcquireTypes.Mixed or acquireType == private.AcquireTypes.Quest)
 							and acquireType:GetEntity(sourceID).Location == location then
 						shouldExecute = true
 					elseif (acquireType == private.AcquireTypes.WorldEvent or acquireType == private.AcquireTypes.Custom or acquireType == private.AcquireTypes.Discovery)

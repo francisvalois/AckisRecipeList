@@ -1,0 +1,48 @@
+tag 85c08a9c59e75b9d2fe1b38dd684aa3703ec35b0 9.1.0.1
+Author:	Ressy <resa1983@hotmail.com>
+Date:	Tue Sep 7 22:00:37 2021 -0400
+
+9.1 update
+
+commit 4b46d7a850f4ee4873208a2b7720256a7b9993f6
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:32:33 2021 -0400
+
+    Bump the TOC
+
+commit 3d961aea11bc00d7e66b66d7184beeacd5f8defb
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:32:26 2021 -0400
+
+    FINALLY fix the various location errors
+
+commit 7b7374afccca01f8dc1058569da611d17e3d3a69
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:32:12 2021 -0400
+
+    Add Korthia vendors & such
+
+commit 92acaa2ad33ef6a36d2907c607197162363dc1da
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:31:42 2021 -0400
+
+    Fix training recipes
+
+commit fa4639819bf923aae3b317e6687a8d5b39fdb927
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:31:06 2021 -0400
+
+    Make it easier on myself to find the new recipes added
+
+commit 949110f512dee9b4c18a6904cd7b9fc1d254dc00
+Author: Ressy <resa1983@hotmail.com>
+Date:   Tue Sep 7 21:30:03 2021 -0400
+
+    Fix faction related issues
+
+commit 0ed1363ad60dff5d669f2721637e013484a0b81e
+Author: Ressy <resa1983@hotmail.com>
+Date:   Mon Jun 28 22:00:48 2021 -0400
+
+    Update Uldum to stop Inscription from erroring
+

@@ -1,9 +1,9 @@
 ## Author: Ackis, Torhal, Ressy
 
-## Interface: 90001
-## Version: @project-version@
-## X-Revision: @project-abbreviated-hash@
-## X-Date: @file-date-iso@
+## Interface: 90100
+## Version: 9.1.0.1
+## X-Revision: 4b46d7a8
+## X-Date: 2021-09-08T1:32:33Z
 
 ## X-Credits: Zhinjio, FGWarmonger, Kagaro, Speeddymon, Xinhuan, Aesir, BWMerlin, everyone who translated stuff and more!
 ## X-Category: Tradeskill
@@ -23,37 +23,37 @@
 ## X-LoadOn-TRADE_SKILL_SHOW: AddonLoader:LoadAddOn("AckisRecipeList"); AckisRecipeList:TRADE_SKILL_SHOW()
 
 #@non-debug@
-## Title: @localization(locale="enUS", key="Title", namespace="ToC")@
-## Title-frFR: @localization(locale="frFR", key="Title", namespace="ToC")@
-## Title-deDE: @localization(locale="deDE", key="Title", namespace="ToC")@
-## Title-itIT: @localization(locale="itIT", key="Title", namespace="ToC")@
-## Title-koKR: @localization(locale="koKR", key="Title", namespace="ToC")@
-## Title-esMX: @localization(locale="esMX", key="Title", namespace="ToC")@
-## Title-ruRU: @localization(locale="ruRU", key="Title", namespace="ToC")@
-## Title-zhCN: @localization(locale="zhCN", key="Title", namespace="ToC")@
-## Title-esES: @localization(locale="esES", key="Title", namespace="ToC")@
-## Title-zhTW: @localization(locale="zhTW", key="Title", namespace="ToC")@
-## Title-ptBR: @localization(locale="ptBR", key="Title", namespace="ToC")@
+## Title: Ackis Recipe List
+## Title-frFR: Ackis Recipe List
+## Title-deDE: Ackis Rezeptliste 2.0
+## Title-itIT: Ackis Recipe List
+## Title-koKR: Ackis의 제조법 리스트 2.0
+## Title-esMX: Ackis Recipe List 2.0
+## Title-ruRU: Ackis Recipe List
+## Title-zhCN: Ackis Recipe List
+## Title-esES: Ackis Recipe List 2.0
+## Title-zhTW: Ackis Recipe List
+## Title-ptBR: Ackis Recipe List
 #@end-non-debug@
 #@debug@
-## Title: Ackis Recipe List - Development Version
+# ## Title: Ackis Recipe List - Development Version
 #@end-debug@
 
 #@non-debug@
-## Notes: @localization(locale="enUS", key="Description", namespace="ToC")@
-## Notes-frFR: @localization(locale="frFR", key="Description", namespace="ToC")@
-## Notes-deDE: @localization(locale="deDE", key="Description", namespace="ToC")@
-## Notes-koKR: @localization(locale="koKR", key="Description", namespace="ToC")@
-## Notes-itIT: @localization(locale="itIT", key="Description", namespace="ToC")@
-## Notes-esMX: @localization(locale="esMX", key="Description", namespace="ToC")@
-## Notes-ruRU: @localization(locale="ruRU", key="Description", namespace="ToC")@
-## Notes-zhCN: @localization(locale="zhCN", key="Description", namespace="ToC")@
-## Notes-esES: @localization(locale="esES", key="Description", namespace="ToC")@
-## Notes-zhTW: @localization(locale="zhTW", key="Description", namespace="ToC")@
-## Notes-ptBR: @localization(locale="ptBR", key="Description", namespace="ToC")@
+## Notes: Ackis Recipe List is an addon which will scan your trade skills and provide information on how to obtain recipes. It works for all tradeskills including Runeforging.
+## Notes-frFR: Ackis Recipe List est un addon qui analyse vos métiers et fournit des informations sur la façon d'obtenir les recettes manquantes. Il fonctionne pour tous les métiers, y compris Runeforge.
+## Notes-deDE: Ackis Recipelist ist ein AddOn, das deine Berufe durchsucht und dir mitteilt, wo du fehlende Rezepte bekommst. Es funktioniert mit allen Berufen, inklusive Runenschmiedens.
+## Notes-koKR: Ackis Recipe List는 전문 기술을 훑어서 제조법을 얻는 방법에 대한 정보를 제공하는 애드온입니다. 룬 벼리기를 포함한 모든 전문 기술에 작동합니다.
+## Notes-itIT: Ackis Recipe List è un addon che scansiona le tue competenze nelle professioni e fornisce informazioni su come ottenere ricette. Funziona per tutte le professioni, inclusa Forgiarune.
+## Notes-esMX: Examina sus profesiones y se dice cómo obtener las recetas que faltan. Se funciona con todas las profesiones, incluias Forja de runas.
+## Notes-ruRU: Сканирует ваши профессии, составляет список отсутствующих рецептов, отображает информацию о способах их получения.
+## Notes-zhCN: 扫描并告知如何获取缺失配方的详细商业技能信息插件。
+## Notes-esES: Ackis Recipe List es un addon que escanea tus habilidades comerciales y provee información de cómo obtener las recetas. Funciona para todas las habilidades comerciales, incluida Forja de Runas.
+## Notes-zhTW: 掃描並告知如何獲取缺失配方的詳細商業技能訊息插件。
+## Notes-ptBR: Ackis Recipe List é um addon que irá escanear suas profissões e lhe provirá informações de como obter receitas. Funciona com todas profissões incluindo Forja Rúnica
 #@end-non-debug@
 #@debug@
-## Notes: Latest alpha version of Ackis Recipe List
+# ## Notes: Latest alpha version of Ackis Recipe List
 #@end-debug@
 
 #@no-lib-strip@
@@ -72,6 +72,7 @@ Objects\AcquireType\BaseAcquireType.lua
 Objects\AcquireType\Achievement.lua
 Objects\AcquireType\Custom.lua
 Objects\AcquireType\Discovery.lua
+Objects\AcquireType\Mixed.lua
 Objects\AcquireType\MobDrop.lua
 Objects\AcquireType\Quest.lua
 Objects\AcquireType\Reputation.lua

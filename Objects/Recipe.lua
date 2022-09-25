@@ -467,6 +467,11 @@ function Recipe:AddTrainer(...)
 	self:AddFilters(private.FILTER_IDS.TRAINER)
 end
 
+function Recipe:AddMixed(...)
+	self:AddAcquireData(AcquireTypes.Mixed, "Trainer & Vendor", ...)
+	self:AddFilters(private.FILTER_IDS.MIXED)
+end
+
 function Recipe:AddTradeSkill(professionID, localizedLocationName)
 	local acquireType = AcquireTypes.TradeSkill
 	local acquireData = self:GetOrCreateAcquireDataOfType(acquireType, professionID, localizedLocationName)
@@ -613,6 +618,7 @@ do
 			vendor		= { flagName = "VENDOR",	field = "common1",	sv_root = obtain_filters },
 			worlddrop	= { flagName = "WORLD_DROP",	field = "common1",	sv_root = obtain_filters },
 			custom		= { flagName = "CUSTOM",	field = "common1",	sv_root = obtain_filters },
+			mixed 		= { flagName = "MIXED",		field = "common1",	sv_root = obtain_filters },
 		}
 
 		InitializeFilters = nil
@@ -773,6 +779,7 @@ local DUMP_FUNCTION_FORMATS = {
 	[AcquireTypes.MobDrop] = "recipe:AddMobDrop(%s)",
 	[AcquireTypes.WorldDrop] = "recipe:AddWorldDrop(%s)",
 	[AcquireTypes.Quest] = "recipe:AddQuest(%s)",
+	[AcquireTypes.Mixed] = "recipe:AddMixed(%s)",
 	[AcquireTypes.Retired] = "recipe:Retire()",
 }
 
@@ -794,6 +801,7 @@ local IMPLICIT_FLAGS = {
 	VENDOR = true,
 	WORLD_DROP = true,
 	WORLD_EVENT = true,
+	MIXED = true,
 }
 
 -- Reputation flags are automatically added when a reputation vendor is assigned to the recipe.
@@ -1100,19 +1108,22 @@ BLACKLISTED_RECIPE_IDS = {
 	[173732] = true,	[174979] = true,	[175070] = true,	[175071] = true,
 	[175072] = true,	[175074] = true,	[175076] = true,	[175078] = true,
 	[175085] = true,	[175086] = true,	[177355] = true,	[181870] = true,
+	[284415] = true,
 	-- Shadowlands
-	[338121] = true,	[338123] = true,	[338125] = true,
+	[338121] = true,	[338123] = true,	[338125] = true,	[346026] = true,
 
 
 	-- ------------------------------------------------------------------------------------
 	----ENGINEERING
 	-- ------------------------------------------------------------------------------------
 	[12900] = true,		[30342] = true,		[30343] = true,		[43676] = true,
-	[162208] = true,	[169077] = true,	[177364] = true,	[178242] = true,
+	[169077] = true,	[177364] = true,	[178242] = true,
 	[181422]= true,		[181423] = true,
 	-- Shadowlands
-	[338210] = true,	[338212] = true,	[338214] = true,	[338216] = true,
-	[338218] = true,	[338219] = true,	[338222] = true,	[338223] = true,
+	[338119] = true, 	[338210] = true,	[338212] = true,	[338213] = true,
+	[338214] = true,	[338216] = true,	[338217] = true,	[338218] = true,
+	[338219] = true,	[338220] = true, 	[338222] = true,	[338223] = true,
+
 
 	-- ------------------------------------------------------------------------------------
 	----INSCRIPTION
@@ -1130,6 +1141,10 @@ BLACKLISTED_RECIPE_IDS = {
 	[25614] = true, 	[26918] = true, 	[26920] = true, 	[32810] = true,
 	[73233] = true, 	[73259] = true, 	[170832] = true,	[248937] = true,
 	[248938] = true,	[248939] = true,	[248940] = true,
+	-- Shadowlands
+	[338238] = true,	[338239] = true,	[338240] = true,	[338241] = true,
+	[338242] = true,	[338243] = true,	[338244] = true,	[338245] = true,
+	[338246] = true,	[338247] = true,	[338248] = true,	[338249] = true,
 
 	-- --------------------------------------------------------------------------------------
 	---LEATHERWORKING
@@ -1146,6 +1161,9 @@ BLACKLISTED_RECIPE_IDS = {
 	[196397] = true,	[196425] = true,	[196427] = true, 	[196428] = true,
 	[196442] = true,	[196456] = true,	[196457] = true,	[196467] = true,
 	[196468] = true,	[196469] = true,	[208596] = true,	[208615] = true,
+	[338253] = true,	[338254] = true,	[338255] = true,	[338257] = true,
+	[338258] = true,	[338259] = true,	[338260] = true,	[338262] = true,
+	[338263] = true,	[338264] = true,	[338265] = true,
 
 	-- --------------------------------------------------------------------------------------
 	---TAILORING
@@ -1160,6 +1178,11 @@ BLACKLISTED_RECIPE_IDS = {
 	[186763] = true,	[186764] = true,	[186799] = true,	[186801] = true,
 	[186803] = true,	[187058] = true,	[187059] = true,	[187060] = true,
 	[187064] = true,	[187065] = true,	[187066] = true,
+
+	--Shadowlands
+	[338267] = true,	[338269] = true,	[338270] = true,	[338271] = true,
+	[338272] = true,	[338273] = true,	[338275] = true,	[338276] = true,
+	[338277] = true,	[338278] = true,	[338279] = true,	[338280] = true,
 }
 
 

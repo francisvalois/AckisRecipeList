@@ -60,7 +60,7 @@ function private.MobGUIDToIDNum(guid)
 	end
 end
 
---@debug@
+--[===[@debug@
 do
 	local function PrintProfessions()
 		addon:Print("Must supply a valid profession name, or \"all\":")
@@ -401,6 +401,7 @@ do
 		"Trainer",
 		"Vendor",
 		"WorldEvent",
+		"Trainer & Vendor",
 	}
 
 	function addon:DumpProfessionLists(target_profession_name)
@@ -494,4 +495,4 @@ do
 		output:Display()
 	end
 end -- do
---@end-debug@
+--@end-debug@]===]
