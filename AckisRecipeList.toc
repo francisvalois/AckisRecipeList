@@ -1,4 +1,4 @@
-## Author: Ackis, Torhal, Ressy
+## Author: Ackis, Torhal, Ressy, Fulrad
 ## Interface-Wrath: 30400
 ## Version: 10.0.0.1
 ## X-Revision: 4b46d7a8

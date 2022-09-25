@@ -32,17 +32,8 @@ function module:InitializeMobDrops()
 		})
 	end
 
-	AddMob(3444,	L["Dig Rat"],				Z.SOUTHERN_BARRENS,		47.8, 88.6)
+	AddMob(3444,	L["Dig Rat"],				Z.THE_BARRENS,		47.8, 88.6)
 	AddMob(14354,	BB["Pusillin"],				Z.DIRE_MAUL,			59.04, 48.82)
-	AddMob(81171,	L["Frostdeep Cavedweller"],		Z.FROSTWALL,			0.0, 0.0)
-	AddMob(85715,	L["Lunarfall Cavedweller"],		Z.LUNARFALL,			0.0, 0.0)
-	AddMob(96240,	L["Lok'goron Hashslinger"],		Z.TANAAN_JUNGLE,		39.8, 45.6)
-	AddMob(99504,	L["Deepwater Spikeback"],		Z.SURAMAR,			78.2, 61.2)
-	AddMob(110042,	L["Heartwood Stag"],			Z.SURAMAR,			64.6, 45.6)
-	AddMob(110043,	L["Heartwood Doe"],			Z.SURAMAR,			64.6, 45.6)
-	AddMob(110340,	L["Myonix"],				Z.SURAMAR,			40.8, 32.8)
-	AddMob(133827,	L["Mordvigbjorn"],			Z.STORMHEIM,			72.6, 50.0)
-	AddMob(131863,	BN.RAAL_THE_GLUTTONOUS,			Z.WAYCREST_MANOR,		0.0, 0.0)
 
 	self.InitializeMobDrops = nil
 end
