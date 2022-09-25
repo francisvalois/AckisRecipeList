@@ -26,8 +26,5 @@ function addon:InitMixed()
 		})
 	end
 
-	AddMixed(64058, "Jorunga Stonehoof", 		Z.VALE_OF_ETERNAL_BLOSSOMS,			59.25,  11.7,	"Horde")
-	AddMixed(64085, "Cullen Hammerbrow", 		Z.VALE_OF_ETERNAL_BLOSSOMS,			91.1,	65.1,	"Alliance")
-
 	self.InitMixed = nil
 end

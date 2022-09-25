@@ -23,6 +23,7 @@
     <!--Libraries-->
 <!--@non-debug@-->
     <Include file="libs\LibBabble-Boss-3.0\lib.xml"/>
+    <Include file="libs\LibProfessions-1.0\lib.xml"/>
     <Include file="libs\LibAboutPanel\lib.xml"/>
     <Include file="libs\LibSharedMedia-3.0\lib.xml"/>
     <Include file="libs\LibQTip-1.0\lib.xml"/>

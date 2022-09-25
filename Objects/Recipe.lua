@@ -398,6 +398,8 @@ function Recipe:RemoveFilters(...)
 	SetFilterState(self, false, ...)
 end
 
+
+
 function Recipe:AddAcquireData(acquireType, typeLabel, ...)
 	local acquireData = self:GetOrCreateAcquireDataOfType(acquireType)
 	local isLimitedVendor = typeLabel == "Limited Vendor"
@@ -417,6 +419,11 @@ function Recipe:AddAcquireData(acquireType, typeLabel, ...)
 		if isLimitedVendor then
 			quantity = select(currentVariableIndex, ...)
 			currentVariableIndex = currentVariableIndex + 1
+		end
+		if (identifier == nil) then
+			local test = {spellID = self:SpellID(), acquireType = acquireType, typeLabel = typeLabel, variablesCount = variablesCount, arg1 = select(1, ...), arg2 = select(1, ...)}
+			error(tprint(test))
+			-- error("identifier: ".. currentVariableIndex)
 		end
 		acquireData[identifier] = true
 
@@ -653,9 +660,7 @@ do
 		[CLASS_FLAGS_WORD1.SHAMAN]		= "shaman",
 		[CLASS_FLAGS_WORD1.ROGUE]		= "rogue",
 		[CLASS_FLAGS_WORD1.WARLOCK]		= "warlock",
-		[CLASS_FLAGS_WORD1.WARRIOR]		= "warrior",
-		[CLASS_FLAGS_WORD1.MONK]		= "monk",
-		[CLASS_FLAGS_WORD1.DEMONHUNTER]		= "demonhunter",
+		[CLASS_FLAGS_WORD1.WARRIOR]		= "warrior"
 	}
 
 	-- Returns true if any of the filter flags are turned on.

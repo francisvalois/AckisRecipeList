@@ -903,11 +903,14 @@ do
                 _G.TipTac:AddModifiedTip(SpellTooltip)
                 SpellTooltip.tiptac = true
             end
-
+			-- private.Debug(tprint(SpellTooltip));
             -- Set the spell tooltip's scale, and copy its other values from GameTooltip so AddOns which modify it will work.
-            SpellTooltip:SetBackdrop(_G.GameTooltip:GetBackdrop() or nil)
-            SpellTooltip:SetBackdropColor(_G.GameTooltip:GetBackdropColor() or nil)
-            SpellTooltip:SetBackdropBorderColor(_G.GameTooltip:GetBackdropBorderColor() or nil)
+			if not SpellTooltip.SetBackdrop then
+				Mixin(SpellTooltip, _G.BackdropTemplateMixin)
+			end
+			SpellTooltip:SetBackdrop(_G.GameTooltip.NineSlice:GetBackdrop() or nil)
+            SpellTooltip:SetBackdropColor(_G.GameTooltip.NineSlice:GetBackdropColor() or nil)
+            SpellTooltip:SetBackdropBorderColor(_G.GameTooltip.NineSlice:GetBackdropBorderColor() or nil)
             SpellTooltip:SetScale(addon.db.profile.tooltip.scale)
             SpellTooltip:SetClampedToScreen(true)
             SpellTooltip:SetHyperlink(spellHyperlink)

@@ -60,7 +60,14 @@ function AcquireType:AddEntity(module, entity)
 	end
 
 	if entity.locationName then
+		if (entity.locationName == nil) then
+			error(tprint(entity))
+		end
 		entity.Location = private.LocationsByLocalizedName[entity.locationName]
+		if (entity.Location == nil) then
+			private.Debug("%s %s (%s) has an invalid location with %s", self:Name(), entity.name or _G.UNKNOWN, entity.identifier, entity.locationName)
+		end
+
 		entity.locationName = nil
 	elseif self:HasCoordinates() then
 		private.Debug("%s %s (%s) has an unknown location.", self:Name(), entity.name or _G.UNKNOWN, entity.identifier)

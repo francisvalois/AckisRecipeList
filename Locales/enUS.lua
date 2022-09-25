@@ -763,6 +763,7 @@ L["Heartwood Doe"] = true
 L["Heartwood Stag"] = true
 L["Heldan Galesong"] = true
 L["Helenia Olden"] = true
+L["HENRY_STERN_RFD"] = "Obtained by talking to Henry Stern in Razorfen Downs."
 L["HEROIC"] = "Drops in 25 man Heroic version of this raid."
 L["Hessir"] = true
 L["Hgarth"] = true

@@ -21,6 +21,7 @@ local FOLDER_NAME, private	= ...
 local LibStub = _G.LibStub
 local addon	= LibStub("AceAddon-3.0"):GetAddon(private.addon_name)
 local L		= LibStub("AceLocale-3.0"):GetLocale(private.addon_name)
+local LibProfessions		= LibStub("LibProfessions-1")
 
 function private.InitializeFrame()
 	-- ----------------------------------------------------------------------------
@@ -427,7 +428,7 @@ function private.InitializeFrame()
 	end -- do-block
 
 	function profession_cycler:SetTexture()
-		_G.SetPortraitToTexture("ARL_ProfessionButtonPortrait", _G.C_TradeSkillUI.GetTradeSkillTexture(_G.C_TradeSkillUI.GetTradeSkillLine()))
+		_G.SetPortraitToTexture("ARL_ProfessionButtonPortrait", "interface/icons/"..LibProfessions:iconFile(_G.GetTradeSkillLine()))
 	end
 
 	-- ----------------------------------------------------------------------------

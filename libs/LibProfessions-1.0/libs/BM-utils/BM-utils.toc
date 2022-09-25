@@ -1,0 +1,13 @@
+## Interface: 90005
+## Interface-Classic: 11307
+## Interface-BCC: 20501
+## Interface-Wrath: 30400
+## Version: v1.7
+## Author: datagutten
+## Title: Lib: Beast Masters utilities
+## Notes: Utilities used in my addons
+## X-GitHubURL: https://github.com/Beast-Masters-addons/BM-utils
+## SavedVariables: Characters
+
+lib.xml
+addon\CharacterData.lua

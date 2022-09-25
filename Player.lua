@@ -14,6 +14,7 @@ local FOLDER_NAME, private = ...
 
 local LibStub = _G.LibStub
 local addon = LibStub("AceAddon-3.0"):GetAddon(private.addon_name)
+local professions = LibStub("LibProfessions-1")
 
 -- ----------------------------------------------------------------------------
 -- Data which is stored regarding a players statistics (luadoc copied from Collectinator, needs updating)
@@ -145,13 +146,11 @@ do
 	function Player:UpdateProfessions()
 		table.wipe(self.professions)
 
-		known.prof1, known.prof2, known.archaeology, known.fishing, known.cooking = _G.GetProfessions()
-
-		for profession, index in pairs(known) do
-			local name, icon, rank, maxrank, numspells, spelloffset, skillline = _G.GetProfessionInfo(index)
-
-			self.professions[name] = rank
+		known = professions.GetProfessions(true)
+		for professionName, data in pairs(known) do
+			self.professions[professionName] = data.skill
 		end
+
 		addon.db.global.tradeskill[private.REALM_NAME] = addon.db.global.tradeskill[private.REALM_NAME] or {}
 		addon.db.global.tradeskill[private.REALM_NAME][private.PLAYER_NAME] = addon.db.global.tradeskill[private.REALM_NAME][private.PLAYER_NAME] or {}
 

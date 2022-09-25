@@ -31,7 +31,6 @@ function addon:InitVendor()
 	AddVendor(777,		L["Amy Davenport"],			Z.REDRIDGE_MOUNTAINS,		28.2,	43.6,	"Alliance") -- Leatherworking, Tailoring
 	AddVendor(843,		L["Gina MacGregor"],			Z.WESTFALL,			57.6,	54.0,	"Alliance") -- Leatherworking, Tailoring
 	AddVendor(989,		L["Banalash"],				Z.SWAMP_OF_SORROWS,		46.6,	56.9,	"Horde") -- Cooking, Enchanting, Jewelcrafting
-	AddVendor(1148,		L["Nerrist"],				Z.NORTHERN_STRANGLETHORN,	39.2,	51.0,	"Horde") -- Cooking, Jewelcrafting
 	AddVendor(1313,		L["Maria Lumere"],			Z.STORMWIND_CITY,		55.7,	85.5,	"Alliance") -- Alchemy, Enchanting, Engineering
 	AddVendor(1318,		L["Jessara Cordell"],			Z.STORMWIND_CITY,		53.0,	74.2,	"Alliance") -- Enchanting, Tailoring
 	AddVendor(2393,		L["Christoph Jeffcoat"],		Z.HILLSBRAD_FOOTHILLS,		57.5,	47.8,	"Horde") -- Alchemy, Jewelcrafting, Leatherworking, Tailoring
@@ -41,7 +40,7 @@ function addon:InitVendor()
 	AddVendor(3012,		L["Nata Dawnstrider"],			Z.THUNDER_BLUFF,		44.9,	37.7,	"Horde") -- Enchanting, Tailoring
 	AddVendor(3134,		L["Kzixx"],				Z.DUSKWOOD,			81.9,	19.9,	"Neutral") -- Alchemy, Engineering
 	AddVendor(3346,		L["Kithas"],				Z.ORGRIMMAR,			53.3,	48.9,	"Horde") -- Enchanting, Tailoring
-	AddVendor(3499,		L["Ranik"],				Z.NORTHERN_BARRENS,		67.1,	73.5,	"Neutral") -- Alchemy, Jewelcrafting, Tailoring
+	AddVendor(3499,		L["Ranik"],				Z.THE_BARRENS,		67.1,	73.5,	"Neutral") -- Alchemy, Jewelcrafting, Tailoring
 	AddVendor(3537,		L["Zixil"],				Z.HILLSBRAD_FOOTHILLS,		49.8,	60.8,	"Neutral") -- Enchanting, Engineering, Leatherworking, Tailoring
 	AddVendor(3556,		L["Andrew Hilbert"],			Z.SILVERPINE_FOREST,		43.2,	40.7,	"Horde") -- Cooking, Leatherworking, Tailoring
 	AddVendor(3954,		L["Dalria"],				Z.ASHENVALE,			35.1,	52.1,	"Alliance") -- Enchanting, Jewelcrafting
@@ -113,68 +112,6 @@ function addon:InitVendor()
 	AddVendor(32773,	L["Logistics Officer Brighton"],	Z.HOWLING_FJORD,		59.7,	63.9,	"Alliance") -- Blacksmithing, Engineering
 	AddVendor(32774,	L["Sebastian Crane"],			Z.HOWLING_FJORD,		79.6,	30.7,	"Horde") -- Blacksmithing, Engineering
 	AddVendor(37687,	L["Alchemist Finklestein"],		Z.ICECROWN_CITADEL,		0,	0,	"Neutral") -- Blacksmithing, Leatherworking, Tailoring
-	AddVendor(46572,	L["Goram"],				Z.ORGRIMMAR,			48.2,	75.6,	"Horde") -- Alchemy, Cooking
-	AddVendor(46602,	L["Shay Pressler"],			Z.STORMWIND_CITY,		64.6,	76.8,	"Alliance") -- Alchemy, Cooking
-	AddVendor(51495,	L["Steeg Haskell"],			Z.IRONFORGE,			36.3,	85.8,	"Alliance") -- Alchemy, Cooking
-	AddVendor(51496,	L["Kim Horn"],				Z.UNDERCITY,			69.6,	43.8,	"Horde") -- Alchemy, Cooking
-	AddVendor(51503,	L["Randah Songhorn"],			Z.THUNDER_BLUFF,		37.6,	62.8,	"Horde") -- Alchemy, Cooking
-	AddVendor(51512,	L["Mirla Silverblaze"],			Z.DALARAN_NORTHREND,		52.6,	56.6,	"Neutral") -- Alchemy, Cooking
-	AddVendor(53214,	L["Damek Bloombeard"],			Z.MOLTEN_FRONT,			47.0,	90.6,	"Neutral") -- Blacksmithing, Engineering
-	AddVendor(53410,	L["Lissah Spellwick"],			Z.DUSTWALLOW_MARSH,		66.0,	49.7,	"Alliance") -- Enchanting, Tailoring
-	AddVendor(53881,	L["Ayla Shadowstorm"],			Z.MOLTEN_FRONT,			44.8,	86.6,	"Neutral") -- Leatherworking, Tailoring
-	AddVendor(59908,	L["Jaluu the Generous"],		Z.VALE_OF_ETERNAL_BLOSSOMS,	74.2,	42.6,	"Neutral") -- Leatherworking, Tailoring
-	AddVendor(64001,	L["Sage Lotusbloom"],			Z.VALE_OF_ETERNAL_BLOSSOMS,	62.6,	23.2,	"Horde") -- Needs updating
-	AddVendor(64032,	L["Sage Whiteheart"],			Z.VALE_OF_ETERNAL_BLOSSOMS,	0.0,	0.0,	"Alliance") -- Enchanting, Tailoring  -- Needs updating
-	AddVendor(90894,	L["Alexi Hackercam"],			Z.LUNARFALL,			34.6,	33.0,	"Alliance") -- Blacksmithing, Engineering, Jewelcrafting
-	AddVendor(91030,	L["Trixxy Volt"],			Z.FROSTWALL,			40.8,	54.8,	"Horde") -- Blacksmithing, Engineering, Jewelcrafting
-	AddVendor(91031,	L["Nicholas Mitrik"],			Z.FROSTWALL,			40.8,	54.8,	"Horde") -- Alchemy, Inscription
-	AddVendor(91404,	L["Samantha Scarlet"],			Z.LUNARFALL,			34.6,	33.0,	"Alliance") -- Alchemy, Inscription
-	AddVendor(93530,	L["Ildine Sorrowspear"],		Z.DALARAN_BROKENISLES,		38.3,	41.5,	"Neutral") -- Enchanting, Tailoring
-	AddVendor(93539,	L["Hobart Grapplehammer"],		Z.DALARAN_BROKENISLES,		38.6,	25.2,	"Neutral") -- Jewelcrafting, Engineering, Inscription
-	AddVendor(97360,	L["Matthew Rabis"],			Z.DALARAN_BROKENISLES,		46.0,	56.4,	"Neutral") -- Jewelcrafting, Skinning, Inscription
-	AddVendor(97361,	L["Oxana Demonslay"],			Z.DALARAN_BROKENISLES,		67.0,	17.7,	"Neutral") -- Jewelcrafting, Inscription
-	AddVendor(97362,	L["Dazzik \"Proudmoore\""],		Z.DALARAN_BROKENISLES,		66.2,	74.1,	"Neutral") -- Jewelcrafting, Tailoring
-	AddVendor(97363,	L["K'huta"],				Z.DALARAN_BROKENISLES,		65.7,	80.3,	"Neutral") -- Enchanting, Inscription
-	AddVendor(97366,	L["The Widow"],				Z.DALARAN_BROKENISLES,		71.8,	73.8,	"Neutral") -- Jewelcrafting, Engineering, Inscription
-	AddVendor(97140,	L["First Arcanist Thalyssra"],		Z.SURAMAR,			36.8,	46.6,	"Neutral") -- Enchanting, Tailoring, Alchemy
-	AddVendor(106901,	L["Sylvia Hartshorn"],			Z.VALSHARAH,			54.7,	73.2,	"Neutral") -- Enchanting, Leatherworking
-	AddVendor(106902,	L["Ransa Greyfeather"],			Z.THUNDER_TOTEM,		38.8,	45.4,	"Neutral") -- Jewelcrafting, Blacksmithing
-	AddVendor(106904,	L["Valdemar Stormseeker"],		Z.STORMHEIM,			60.2,	51.2,	"Neutral") -- Leatherworking, Blacksmithing
-	AddVendor(107109,	L["Xur'ios"],				Z.DALARAN_BROKENISLES,		48.8,	13.5,	"Neutral") -- Leatherworking, Engineering, Blacksmithing, Enchanting, Inscription
-	AddVendor(107376,	L["Veridis Fallon"],			Z.AZSUNA,			46.9,	41.4,	"Neutral") -- Inscriptions, Tailoring
-	AddVendor(107379,	L["Marin Bladewing"],			Z.AZSUNA,			48.2,	73.8,	"Neutral") -- Inscription, Jewelcrafting, Engineering
-	AddVendor(107760,	L["Strap Bucklebolt"],			Z.DALARAN_BROKENISLES,		66.4,	81.4,	"Neutral") -- Blacksmithing, Leatherworking, Tailoring
-	AddVendor(115736,	L["First Arcanist Thalyssra"],		Z.SURAMAR,			36.8,	46.6,	"Neutral") -- Enchanting, Tailoring, Alchemy
-	AddVendor(127120,	L["Vindicator Jaelaana"],		Z.ARGUS,			0.0,	0.0,	"Neutral") --Needs updating  -- Jewelcrafting, Blacksmithing, Tailoring
-	AddVendor(127151,	L["Toraan the Revered"],		Z.ANTORAN_WASTES,		0.0,	0.0,	"Neutral") --Needs updating  -- Inscription, Alchemy, Enchanting
-	AddVendor(131287,	L["Natal'hakata"],			Z.DAZARALOR,			65.2,	71.2,	"Horde")
-	AddVendor(134345,	L["Collector Kojo"],			Z.ZULDAZAR,			71.4,	30.2,	"Neutral")
-	AddVendor(135446,	L["Vindicator Jaelaana"],		Z.BORALUS,			69.0,	24.7,	"Alliance") -- Alchemy, Blacksmithing, Enchanting, Engineering, Jewelcrafting)
-	AddVendor(135447,	L["Ransa Greyfeather"],			Z.ZULDAZAR,			58.0,	62.6,	"Horde") -- Alchemy, Blacksmithing, Enchanting, Engineering, Jewelcrafting)
-	AddVendor(135459,	L["Provisioner Lija"],			Z.NAZMIR,			39.0,	79.4,	"Horde")
-	AddVendor(135793,	L["Collector Kojo"],			Z.STORMSONG_VALLEY,		40.4,	36.4,	"Neutral")
-	AddVendor(135800,	L["Sister Lilyana"],			Z.STORMSONG_VALLEY,		59.2,	69.4,	"Alliance")
-	AddVendor(135804,	L["Hoarder Jena"],			Z.VOLDUN,			56.6,	49.8,	"Horde")
-	AddVendor(135808,	L["Provisioner Fray"],			Z.BORALUS,			67.6,	21.9,	"Alliance") -- Alchemy,
-	AddVendor(135815,	L["Quartermaster Alcorn"],		Z.DRUSTVAR,			37.8,	49.0,	"Alliance")
-	AddVendor(142552,	L["Ozgrom Ragefang"],			Z.ZULDAZAR,			52.6,	58.2,	"Horde") -- PvP vendor with plans for all professions
-	AddVendor(142564,	L["Leedan Gustaf"],			Z.BORALUS,			56.3,	27.2,	"Alliance") -- PvP vendor with plans for all professions
-	AddVendor(153512,	L["Finder Pruc"],			Z.NAZJATAR,			49.0,	62.2,	"Horde") -- Alchemy, Cooking, Enchanting, Inscription
-	AddVendor(153514,	L["Finder Palta"],			Z.NAZJATAR,			49.2,	62.0,	"Horde")
-	AddVendor(154140,	L["Speaker Utia"],			Z.NAZJATAR,			38.0,	55.7,	"Alliance") -- Alchemy, Cooking, Enchanting, Inscription
-	AddVendor(154652,	L["Dazzerian"],				Z.NAZJATAR,			48.6,	60.8,	"Horde") -- PvP vendor
-	AddVendor(154653,	L["Crafticus Mindbender"],		Z.NAZJATAR,			38.1,	55.4,	"Alliance") -- PvP vendor
-	AddVendor(150716,	L["Stolen Royal Vendorbot"],		Z.MECHAGON_ISLAND,		73.7,	36.9,	"Neutral")
-	AddVendor(156822,	L["Mistress Mihaela"],			Z.REVENDRETH,			61.4,	63.8,	"Neutral")
-	AddVendor(158556,	L["Aithlyn"],				Z.ARDENWEALD,			60.2,	35.2,	"Neutral") --Wild Hunt Quartermaster
-	AddVendor(160470,	L["Adjutant Nikos"],			Z.BASTION,			52.2,	47.1,	"Neutral") --Ascended Quartermaster
-	AddVendor(161565,	L["Bragni"],				Z.BORALUS,			56.4,	27.0,	"Neutral")
-	AddVendor(162804,	L["Ve'nari"],				Z.THE_MAW,			46.8,	41.6,	"Neutral")
-	AddVendor(173003,	L["Nalcorn Talsen"],			Z.MALDRAXXUS,			50.6,	53.4,	"Neutral") --Undying Army Quartermaster
-	AddVendor(173705,	L["Archivist Janeera"],			Z.REVENDRETH,			73.0,	52.0,	"Neutral") --Avowed Quartermaster
-	AddVendor(174914,	L["Elwyn"],				Z.ARDENWEALD,			59.4,	33.0,	"Neutral") --Renown Quartermaster in Ardenweald
-	AddVendor(178257,	L["Archivist Roh-Suir"],		Z.KORTHIA,			62.8,	22.6,	"Neutral")
-	AddVendor(179321,	L["Duchess Mynx"],			Z.KORTHIA,			63.4,	23.4,	"Neutral")
 
 	self.InitVendor = nil
 end

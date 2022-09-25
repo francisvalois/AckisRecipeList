@@ -31,6 +31,7 @@ _G.ARL = addon
 local L = LibStub("AceLocale-3.0"):GetLocale(private.addon_name)
 local Toast = LibStub("LibToast-1.0")
 local Dialog = LibStub("LibDialog-1.0")
+local professions = LibStub("LibProfessions-1")
 
 local wow_version, wow_build_num, wow_date, wow_ui_version = _G.GetBuildInfo()
 private.wow_version = wow_version
@@ -310,14 +311,12 @@ function addon:OnInitialize()
 					druid = true,
 					hunter = true,
 					mage = true,
-					monk = true,
 					paladin = true,
 					priest = true,
 					rogue = true,
 					shaman = true,
 					warlock = true,
 					warrior = true,
-					demonhunter = true,
 				},
 			}
 		}
@@ -525,8 +524,8 @@ function addon:TRADE_SKILL_SHOW()
 			elseif not isShiftKeyDown and not isAltKeyDown and not isControlKeyDown then
 				local mainPanel = addon.Frame
 
-				local professionID, _, _, _, _, _, localizedProfessionName = _G.C_TradeSkillUI.GetTradeSkillLine()
-				if mainPanel and mainPanel:IsVisible() and private.CurrentProfession:LocalizedName() == localizedProfessionName then
+				local tradeskillName = GetTradeSkillLine()
+				if mainPanel and mainPanel:IsVisible() and private.CurrentProfession:LocalizedName() == tradeskillName then
 					mainPanel:Hide()
 				else
 					addon:Scan()
@@ -579,9 +578,9 @@ function addon:TRADE_SKILL_SHOW()
 		scanButton:SetWidth(scanButton:GetTextWidth() + 10)
 	end
 
-	local _, localizedProfessionName = _G.C_TradeSkillUI.GetTradeSkillLine()
+	local tradeskillName = GetTradeSkillLine()
 
-	if private.LOCALIZED_PROFESSION_NAME_TO_MODULE_NAME_MAPPING[localizedProfessionName] then
+	if private.LOCALIZED_PROFESSION_NAME_TO_MODULE_NAME_MAPPING[tradeskillName] then
 		scanButton:Show()
 	else
 		scanButton:Hide()
@@ -603,9 +602,9 @@ do
 		last_update = last_update + elapsed
 
 		if last_update >= 0.5 then
-			local _, localizedProfessionName = _G.C_TradeSkillUI.GetTradeSkillLine()
+			local tradeskillName = GetTradeSkillLine()
 
-			if localizedProfessionName ~= "UNKNOWN" then
+			if tradeskillName ~= "UNKNOWN" then
 				addon:Scan(false, true)
 			end
 			self:Hide()
@@ -664,7 +663,8 @@ do
 			local foundModule
 			local moduleName = FOLDER_NAME .. "_" .. professionModuleName or ""
 			local _, _, _, _, reason = _G.GetAddOnInfo(moduleName)
-
+			private.Debug("Loading Module: "..moduleName)
+			private.Debug("Loading Reason: "..reason)
 			if reason == "DISABLED" then
 				Dialog:Spawn("ARL_ModuleErrorDialog", professionModuleName)
 				return false
@@ -785,6 +785,31 @@ function addon:ChatCommand(input)
 	end
 end
 
+function tprint (tbl, indent)
+	if not indent then indent = 0 end
+	local toprint = string.rep(" ", indent) .. "{\r\n"
+	indent = indent + 2 
+	for k, v in pairs(tbl) do
+	  toprint = toprint .. string.rep(" ", indent)
+	  if (type(k) == "number") then
+		toprint = toprint .. "[" .. k .. "] = "
+	  elseif (type(k) == "string") then
+		toprint = toprint  .. k ..  "= "   
+	  end
+	  if (type(v) == "number") then
+		toprint = toprint .. v .. ",\r\n"
+	  elseif (type(v) == "string") then
+		toprint = toprint .. "\"" .. v .. "\",\r\n"
+	  elseif (type(v) == "table") then
+		toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+	  else
+		toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+	  end
+	end
+	toprint = toprint .. string.rep(" ", indent-2) .. "}"
+	return toprint
+  end
+
 -- ----------------------------------------------------------------------------
 -- Recipe Scanning Functions
 -- ----------------------------------------------------------------------------
@@ -839,7 +864,7 @@ do
 	-- @param isTextDump Boolean indicating if we want the output to be a text dump, or if we want to use the ARL GUI
 	-- @return A frame with either the text dump, or the ARL frame
 	function addon:Scan(isTextDump, isRefresh)
-		local professionID, _, professionRank, _, _, _, localizedProfessionName = _G.C_TradeSkillUI.GetTradeSkillLine()
+		local localizedProfessionName, professionRank, maxLevel, skillLineModifier = GetTradeSkillLine()
 		if localizedProfessionName == _G.UNKNOWN then
 			self:Print(L["OpenTradeSkillWindow"])
 			return
@@ -857,15 +882,16 @@ do
 		private.current_profession_scanlevel = professionRank
 
 		-- Clear the search box and its focus so the scan will have correct results.
-		if _G.TradeSkillFrame and _G.TradeSkillFrame:IsVisible() then
-			local search_box = _G.TradeSkillFrame.SearchBox
-			search_box:ClearFocus()
-			search_box:GetScript("OnEditFocusLost")(search_box)
-			search_box:SetText("")
-		end
+		-- if _G.TradeSkillFrame and _G.TradeSkillFrame:IsVisible() then
+		-- 	local search_box = _G.TradeSkillFrame.SearchBox
+		-- 	error(tprint(TradeSkillFrameEditBox))
+		-- 	search_box:ClearFocus()
+		-- 	search_box:GetScript("OnEditFocusLost")(search_box)
+		-- 	search_box:SetText("")
+		-- end
 
 		-- Make sure we're only updating a profession the character actually knows - this could be a scan from a tradeskill link.
-		local isTradesSkillLinked = _G.C_TradeSkillUI.IsTradeSkillLinked() or _G.C_TradeSkillUI.IsTradeSkillGuild()
+		local isTradesSkillLinked = IsTradeSkillLinked()
 		if not isTradesSkillLinked then
 			player.scanned_professions[localizedProfessionName] = true
 		end
@@ -902,57 +928,31 @@ do
 		-- ----------------------------------------------------------------------------
 		local foundRecipeCount = 0
 		local profession = private.Professions[localizedProfessionName]
-		local recipeIDs = _G.C_TradeSkillUI.GetAllRecipeIDs()
+		local learnedRecipeList = professions.currentProfession.GetRecipes()
 
-		for recipeIndex = 1, #recipeIDs do
-			local recipeID = recipeIDs[recipeIndex]
-			local recipe = profession.Recipes[recipeID]
-			local recipeInfo = _G.C_TradeSkillUI.GetRecipeInfo(recipeID)
+		local recipeToIDDict = {}
+		for i, data in pairs(learnedRecipeList) do
+			recipeToIDDict[data.recipeId] = data
+		end
 
-			if recipe then
-				recipe.isValidated = true
+		for recipeID, recipeAddonData in pairs(profession.Recipes) do
+			local learnedRecipe = recipeToIDDict[recipeID]
 
-				if recipeInfo.learned then
-					recipe:RemoveState("IGNORED")
+			recipeAddonData.isValidated = true
+			if learnedRecipe then
+				recipeAddonData:RemoveState("IGNORED")
 
-					if isTradesSkillLinked then
-						recipe:AddState("LINKED")
-					else
-						recipe:AddState("KNOWN")
-						recipe:RemoveState("LINKED")
-					end
-
-					foundRecipeCount = foundRecipeCount + 1
-				elseif IsRecipeInfoLearnedByDescendant(recipeInfo) or IsRecipeInfoUnlearnedByAncestor(recipeInfo) then
-					recipe:AddState("IGNORED")
+				if isTradesSkillLinked then
+					recipeAddonData:AddState("LINKED")
 				else
-					recipe:RemoveState("KNOWN")
-					recipe:RemoveState("LINKED")
+					recipeAddonData:AddState("KNOWN")
+					recipeAddonData:RemoveState("LINKED")
 				end
+
+				foundRecipeCount = foundRecipeCount + 1
 			else
-				--[===[@debug@
-				local recipe = self:AddRecipe(profession:Module(), {
-					_acquireTypeData = {},
-					_bitflags = {},
-					_expansionID = private.GetEffectiveExpansionID(),
-					_localizedName = _G.GetSpellInfo(recipeID),
-					_qualityID = private.ITEM_QUALITIES.COMMON,
-					_spellID = recipeID,
-				})
-
-				if recipe then
-					recipe.isValidated = true
-					recipe:SetSkillLevels(0, 0, 0, 0, 0)
-					recipe:AddFilters(private.FILTER_IDS.ALLIANCE, private.FILTER_IDS.HORDE, private.FILTER_IDS.TRAINER)
-					recipe:AddCustom("UNKNOWN")
-
-					addon:Printf("Added '%s (%d)' to %s. Do a profession dump.", recipeInfo.name, recipeID, localizedProfessionName)
-				end
-				--@end-debug@]===]
-
-				if not self.is_development_version then
-					self:Debug("%s (%d): %s", recipeInfo.name, recipeID, L["MissingFromDB"])
-				end
+				recipeAddonData:RemoveState("KNOWN")
+				recipeAddonData:RemoveState("LINKED")
 			end
 		end
 

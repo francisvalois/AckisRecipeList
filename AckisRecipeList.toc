@@ -1,11 +1,10 @@
 ## Author: Ackis, Torhal, Ressy
-
-## Interface: 90100
-## Version: 9.1.0.1
+## Interface-Wrath: 30400
+## Version: 10.0.0.1
 ## X-Revision: 4b46d7a8
 ## X-Date: 2021-09-08T1:32:33Z
 
-## X-Credits: Zhinjio, FGWarmonger, Kagaro, Speeddymon, Xinhuan, Aesir, BWMerlin, everyone who translated stuff and more!
+## X-Credits: Fulrad, Zhinjio, FGWarmonger, Kagaro, Speeddymon, Xinhuan, Aesir, BWMerlin, everyone who translated stuff and more!
 ## X-Category: Tradeskill
 ## X-Localizations: enUS, frFR, zhCN, zhTW, deDE, itIT, koKR, esES, esMX, ruRU, ptBR
 ## X-Website: http://www.curse.com/addons/wow/arl

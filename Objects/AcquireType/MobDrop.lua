@@ -30,6 +30,14 @@ private.RegisterAcquireType({
 	-- ----------------------------------------------------------------------------
 	_func_expand_list_entry = function(self, entry_index, entry_type, parent_entry, identifier, info, recipe, hide_location, hide_type)
 		local mob = self:GetEntity(identifier)
+	
+		if (mob == nil) then
+			private.Debug("Unable to find mob entity with identity: "..identifier)
+			entry = private.CreateListEntry(entry_type, parent_entry, recipe)
+			entry:SetText("Invalid mob entry")
+			return private.list_frame:InsertEntry(entry, entry_index, true)
+		end
+
 		local entry = private.CreateListEntry(entry_type, parent_entry, recipe)
 		entry:SetNPCID(identifier)
 		entry:SetText("%s%s %s",
