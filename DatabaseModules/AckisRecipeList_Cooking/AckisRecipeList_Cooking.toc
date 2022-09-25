@@ -1,0 +1,18 @@
+## Interface: 90100
+## Title: Ackis Recipe List: Cooking
+## Notes: Cooking data for Ackis Recipe List.
+## Author: Ackis, Pompy, Ressy, Torhal
+## Version: 9.1.0.1
+## X-Revision: aa34e0e
+## X-Date: 2021-09-08T1:38:34Z
+## Dependencies: AckisRecipeList
+## LoadOnDemand: 1
+
+Core.lua
+Filters.lua
+MobDrops.lua
+Quests.lua
+Trainers.lua
+Vendors.lua
+Recipes.lua
+Discoveries.lua
