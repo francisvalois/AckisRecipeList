@@ -33,10 +33,6 @@ function module:InitializeDiscoveries()
 	AddDiscovery("DISCOVERY_ALCH_BC_XMUTE")
 	AddDiscovery("DISCOVERY_ALCH_NORTHREND_RESEARCH")
 	AddDiscovery("DISCOVERY_ALCH_NORTHREND_XMUTE")
-	AddDiscovery("DISCOVERY_ALCH_PANDARIA")
-	AddDiscovery("DISCOVERY_ALCH_LEGION")
-	AddDiscovery("DISCOVERY_ALCH_LEGION_PREV")
-	AddDiscovery("DISCOVERY_ALCH_BFA")
 
 	self.InitializeDiscoveries = nil
 end

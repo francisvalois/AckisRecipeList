@@ -1,8 +1,8 @@
-## Interface: 90100
+## Interface-Wrath: 30400
 ## Title: Ackis Recipe List: Alchemy
 ## Notes: Alchemy data for Ackis Recipe List.
-## Author: Ackis, Pompy, Ressy, Torhal
-## Version: 9.1.0.1
+## Author: Ackis, Pompy, Ressy, Torhal, Fulrad
+## Version: 10.0.0.1
 ## X-Revision: 1eb0e3e
 ## X-Date: 2021-09-08T1:51:23Z
 ## Dependencies: AckisRecipeList
